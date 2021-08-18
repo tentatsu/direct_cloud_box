@@ -48,7 +48,6 @@ class directCloudBox:
         return None
 
     def __get(self, endpoint):
-        print("get {} start".format(endpoint))
         req_header = {}
         if self.__getAccessToken():
             req_header["access_token"] = self.__getAccessToken()
@@ -56,7 +55,6 @@ class directCloudBox:
         return requests.get(url=domain + endpoint, headers=req_header).json()
  
     def __post(self, endpoint, param):
-        print("post {} start".format(endpoint))
         req_header = {
             'Content-Type': 'application/x-www-form-urlencoded',
         }
@@ -64,30 +62,6 @@ class directCloudBox:
             req_header["access_token"] = self.__getAccessToken()
         post_form_data = urllib.parse.urlencode(param)
         req = requests.post(domain + endpoint, headers=req_header, data=post_form_data.encode()).json()
-
-        print(req)
         return req
-        # print(req.get_header("access_token"))
-        # print(req.get_header("Content-Type"))
-
-        # try:
-        #     with urllib.request.urlopen(req) as response:
-        #         body = json.loads(response.read().decode('utf-8'))
-        #         headers = response.getheaders()
-        #         status = response.getcode()
-        #         print(body)
-        #         return body
-        # except urllib.error.URLError as e:
-        #     print(e.reason)
-        #     print(e)
-
-
         
-
-
-
-
-
-
-
 
