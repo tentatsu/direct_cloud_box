@@ -1,5 +1,4 @@
 from direct_cloud_box.api import directCloudBox
-import logging
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -21,9 +20,18 @@ user_api = directCloudBox(
     PASSWORD
     )
 try:
-    print(user_api.folderCreate("test", "1"))
-    print(user_api.folderGet(""))
-    print(user_api.folderGet("MyBOX"))
-    print(user_api.folderGet("SharedBOX"))
+    # print(user_api.folderCreate("test", "1"))
+    # print(user_api.folderGet(""))
+    print(user_api.folderGet("1"))
+    # print(user_api.folderGet("SharedBOX"))
+    # print(user_api.fileUpload("./sample_file/sample_movie.mp4", "1"))
+    print(user_api.fileGet("1"))
+    
+    print(user_api.fileDownloadUrl("1", "285389469"))
+    print(user_api.fileViewer("285389469"))
+
+
+    
+    
 finally:
     user_api.tokenExpire()
